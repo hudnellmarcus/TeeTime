@@ -3,6 +3,8 @@ require('dotenv').config();
 const express = require('express');
 const app = express(); 
 const mongoose = require('mongoose'); 
+const methodOverride = require('method-override'); 
+// const TeeTime = require('./models/teetimes')
 
 
 
@@ -15,26 +17,38 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 
 // Middleware 
-app.use(express.urlencoded({extended:false})); //body parser 
+app.use(express.urlencoded({extended: true})); //body parser 
+app.use(methodOverride("_method"));
 
 
 
 // Routes / Controllers 
-const reservationsController = require('./controllers/reservations')
+const teeTimesController = require('./controllers/teetimes')
+app.use('/teetimes', teeTimesController);
 
 
 
 // Index
-app.get('/', (req, res) => {
-    res.send("this is the index")
-});
+// app.get('/', (req, res) => {
+//     res.send("this is the index")
+// });
 
 // New
+// app.get('/teetimes/new', (req, res)=> {
+//     res.render('new.ejs');
+// });
+
 // Delete
+
 // Update
+
+
 // Create
-
-
+// app.post('/teetimes', (req, res) => {
+// TeeTime.create(req.body, (error, createdTeeTime) => {
+//     res.send(createdTeeTime)
+// });
+// });
 
 // Edit
 
