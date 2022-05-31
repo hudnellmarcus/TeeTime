@@ -3,7 +3,9 @@ require('dotenv').config();
 const express = require('express');
 const app = express(); 
 const mongoose = require('mongoose'); 
-const methodOverride = require('method-override'); 
+const session = require('express-session');
+const methodOverride = require('method-override');
+
 // const TeeTime = require('./models/teetimes')
 
 
@@ -20,18 +22,39 @@ mongoose.connect(process.env.DATABASE_URL, {
 app.use(express.urlencoded({extended: true})); //body parser 
 app.use(methodOverride("_method"));
 
+app.use(
+    session({
+        secret:process.env.SECRET,
+        resave: false,
+        saveUninitialized: false
+    })
+);
 
 
 // Routes / Controllers 
 const teeTimesController = require('./controllers/teetimes')
 app.use('/teetimes', teeTimesController);
 
+const userController = require('./controllers/users');
+app.use('/users', userController);
+
+const sessionsController = require('./controllers/sessions');
+app.use('/sessions', sessionsController);
+
 
 
 // Index
-// app.get('/', (req, res) => {
-//     res.render('index.ejs', {teetime : allTeeTimes}); 
-// });
+app.get('/', (req, res) => {
+if (req.session.currentUser) {
+    res.render('dashboard.ejs', {
+        currentUser: req.session.currentUser
+    });
+} else {
+    res.render('index.ejs', {
+        currentUser: req.session.currentUser
+    });
+}
+}); 
 
 // New
 // app.get('/teetimes/new', (req, res)=> {

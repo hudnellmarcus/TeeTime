@@ -9,29 +9,31 @@
 </head>
 
 <body>
-    <nav>
-        <a href="/teetimes/new">Add a New TeeTime</a>
-    </nav>
+    <%- include('../views/partials/nav.ejs') %>
+        <nav class="new">
+            <a href="/teetimes/new">Add a New TeeTime</a>
+        </nav>
 
-    <h1>My Tee Times</h1>
-    <ul>
-        <% teetimes.forEach(teetime=> { %>
-            <p>
-                <%=teetime.date; %>
-            </p>
-            <p>
-                <%=teetime.time; %>
-            </p>
-            <p>
-                <%=teetime.location; %>
-            </p>
-            <form action="/teetimes/<%= teetime.id %>?_method=DELETE" method="POST" style="display:inline; margin-left:16px;">
-                <input type="submit" value="DELETE" />
-            </form>
-            <a href="/teetimes/edit/<%=teetime._id %>">Edit</a>
-            </li>
-            <% }) %>
-    </ul>
+        <h1>My Tee Times</h1>
+        <ul>
+            <% teetimes.forEach(teetime=> { %>
+                <p>
+                    <%=teetime.date; %>
+                </p>
+                <p>
+                    <%=teetime.time; %>
+                </p>
+                <p>
+                    <%=teetime.location; %>
+                </p>
+                <form action="/teetimes/<%= teetime.id %>?_method=DELETE" method="POST"
+                    style="display:inline; margin-left:16px;">
+                    <input type="submit" value="DELETE" />
+                </form>
+                <a href="/teetimes/edit/<%=teetime._id %>">Edit</a>
+                </li>
+                <% }) %>
+        </ul>
 
 </body>
 
