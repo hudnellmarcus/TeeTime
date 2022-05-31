@@ -1,7 +1,14 @@
 const express = require('express');
 const TeeTime = require('../models/teetimes')
-
 const router = express.Router();
+// const methodOverride = require('method-override'); 
+// const { append } = require('express/lib/response');
+
+
+
+// app.use(methodOverride('_method')); 
+
+
 
 // Index
 router.get('/', (req, res) => {
@@ -23,17 +30,10 @@ router.get('/new', (req, res) => {
 
 // Delete
 router.delete('/:id', (req, res) => {
-    TeeTime.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        {
-            new: true,
-        },
-        (error, updatedTeeTime) => {
-            res.redirect(`/teetimes/${req.params.id}`);
-        }
-    )
-})
+    TeeTime.findByIdAndDelete(req.params.id, () => {
+        res.redirect('/teetimes');
+    });
+});
 
 
 // Update
@@ -63,9 +63,9 @@ router.post('/', (req, res) => {
 
 
 //Edit
-router.get('/:id/edit', (req, res) => {
+router.get('/edit/:id', (req, res) => {
     TeeTime.findById(req.params.id, (error, foundTeeTime) => {
-        res.render('edit.js', {
+        res.render('edit.ejs', {
             teetime: foundTeeTime,
         });
     });
@@ -88,7 +88,7 @@ router.get('/:id', (req, res) => {
 
 
 
-module.exports = router; 
+module.exports = router;
 
 
 

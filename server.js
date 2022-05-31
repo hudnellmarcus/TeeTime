@@ -30,7 +30,7 @@ app.use('/teetimes', teeTimesController);
 
 // Index
 // app.get('/', (req, res) => {
-//     res.send("this is the index")
+//     res.render('index.ejs', {teetime : allTeeTimes}); 
 // });
 
 // New
@@ -64,7 +64,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 
 // Listener 
-PORT = process.env.PORT
+const PORT = process.env.PORT
 
 app.listen(PORT, () => {
     console.log(`Listening to Andre ${PORT}`);
