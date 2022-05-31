@@ -13,10 +13,27 @@ router.get('/', (req, res) => {
 
 });
 
+
 // New
 router.get('/new', (req, res) => {
     res.render('new.ejs');
 });
+
+
+
+// Delete
+router.delete('/:id', (req, res) => {
+    TeeTime.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+            new: true,
+        },
+        (error, updatedTeeTime) => {
+            res.redirect(`/teetimes/${req.params.id}`);
+        }
+    )
+})
 
 
 // Update
@@ -45,11 +62,26 @@ router.post('/', (req, res) => {
 
 
 
+//Edit
+router.get('/:id/edit', (req, res) => {
+    TeeTime.findById(req.params.id, (error, foundTeeTime) => {
+        res.render('edit.js', {
+            teetime: foundTeeTime,
+        });
+    });
+});
 
 
 
 
-
+// Show 
+router.get('/:id', (req, res) => {
+    TeeTime.findById(req.params.id, (err, foundTeeTime) => {
+        res.render('show.ejs', {
+            teetime: foundTeeTime,
+        });
+    });
+});
 
 
 
@@ -57,3 +89,7 @@ router.post('/', (req, res) => {
 
 
 module.exports = router; 
+
+
+
+
