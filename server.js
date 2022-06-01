@@ -19,7 +19,7 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 
 // Middleware 
-app.use(express.urlencoded({extended: true})); //body parser 
+app.use(express.urlencoded({extended: true })); //body parser 
 app.use(methodOverride("_method"));
 
 app.use(
@@ -36,25 +36,25 @@ const teeTimesController = require('./controllers/teetimes')
 app.use('/teetimes', teeTimesController);
 
 const userController = require('./controllers/users');
-app.use('/users', userController);
+app.use('/teetimes', userController);
 
 const sessionsController = require('./controllers/sessions');
-app.use('/sessions', sessionsController);
+app.use('/teetimes', sessionsController);
 
 
 
 // Index
-app.get('/', (req, res) => {
-if (req.session.currentUser) {
-    res.render('dashboard.ejs', {
-        currentUser: req.session.currentUser
-    });
-} else {
-    res.render('index.ejs', {
-        currentUser: req.session.currentUser
-    });
-}
-}); 
+// app.get('/', (req, res) => {
+// if (req.session.currentUser) {
+//     res.render('dashboard.ejs', {
+//         currentUser: req.session.currentUser
+//     });
+// } else {
+//     res.render('index.ejs', {
+//         currentUser: req.session.currentUser
+//     });
+// }
+// }); 
 
 // New
 // app.get('/teetimes/new', (req, res)=> {

@@ -9,8 +9,9 @@
 </head>
 
 <body>
-    <%- include('../views/partials/nav.ejs') %>
-        <nav class="new">
+    
+    <nav class="new">
+       <%#  include('../partials/nav.ejs')   %> 
             <a href="/teetimes/new">Add a New TeeTime</a>
         </nav>
 
@@ -24,7 +25,7 @@
                     <%=teetime.time; %>
                 </p>
                 <p>
-                    <%=teetime.location; %>
+                <a href="/teetimes/<%= teetime.id %>">    <%=teetime.location %> </a>
                 </p>
                 <form action="/teetimes/<%= teetime.id %>?_method=DELETE" method="POST"
                     style="display:inline; margin-left:16px;">
