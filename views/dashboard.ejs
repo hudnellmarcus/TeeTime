@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Tee Times</title>
+</head>
+
+<body>
+    
+    <nav class="new">
+       <%- include('./partials/nav.ejs') %>
+            <a href="/new">Add a New TeeTime</a>
+        </nav>
+
+        <h1>My Tee Times</h1>
+        <ul>
+            <% teetimes.forEach(teetime => { %>
+                <p>
+                    <%=teetime.date; %>
+                </p>
+                <p>
+                    <%=teetime.time; %>
+                </p>
+                <p>
+                <a href="/<%= teetime.id %>">    <%=teetime.location %> </a>
+                </p>
+                <form action="/<%= teetime.id %>?_method=DELETE" method="POST"
+                    style="display:inline; margin-left:16px;">
+                    <input type="submit" value="DELETE" />
+                </form>
+                <a href="/edit/<%=teetime._id %>">Edit</a>
+                </li>
+                <% }) %>
+        </ul>
+
+</body>
+
+</html>

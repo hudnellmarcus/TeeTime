@@ -5,29 +5,28 @@
     <meta charset="utf-8">
     <title>Add New Tee Time</title>
 </head>
+<%- include('./partials/nav.ejs') %>
 
-<body>
-    <header>
-        <h1>Add Tee Time</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="/teetimes">Home</a>
-                </li>
-                <li>
-                    <a href="/teetimes">Your Tee Times</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <form action="/teetimes/" method="POST">
-            Date: <input type="date" name="date" /><br />
-            Time: <input type="text" name="time" /><br />
-            Course: <input type="text" name="location" /><br />
-            <input type="submit" value="Add Reservation" />
-        </form>
-    </main>
-</body>
+    <body>
+        <header>
+            <h1>Add Tee Time</h1>
+            <nav>
+                <ul>
+
+                    <li>
+                        <a href="/dashboard">Your Tee Times</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <form action="/" method="POST">
+                Date: <input type="date" name="date" /><br />
+                Time: <input type="text" name="time" /><br />
+                Course: <input type="text" name="location" /><br />
+                <input type="submit" value="Add Reservation" />
+            </form>
+        </main>
+    </body>
 
 </html>

@@ -1,19 +1,21 @@
 const express = require('express');
+const app = express();
 const TeeTime = require('../models/teetimes')
 const router = express.Router();
-// const methodOverride = require('method-override'); 
-// const { append } = require('express/lib/response');
+const methodOverride = require('method-override'); 
+const { append } = require('express/lib/response');
+const User = require('../models/user')
 
 
-
-// app.use(methodOverride('_method')); 
+app.use(methodOverride('_method')); 
 
 
 
 // Index
-router.get('/', (req, res) => {
+router.get('/dashboard', (req, res) => {
     TeeTime.find({}, (error, allTeeTimes) => {
-        res.render('index.ejs', {
+        res.render('dashboard.ejs', {
+            currentUser: req.session.currentUser,
             teetimes: allTeeTimes,
         });
     });
@@ -23,7 +25,9 @@ router.get('/', (req, res) => {
 
 // New
 router.get('/new', (req, res) => {
-    res.render('new.ejs');
+    res.render('new.ejs', {
+        currentUser: req.session.currentUser
+    });
 });
 
 
@@ -31,7 +35,7 @@ router.get('/new', (req, res) => {
 // Delete
 router.delete('/:id', (req, res) => {
     TeeTime.findByIdAndDelete(req.params.id, () => {
-        res.redirect('/teetimes');
+        res.redirect('/dashboard');
     });
 });
 
@@ -56,7 +60,7 @@ router.put('/:id', (req, res) => {
 // Create
 router.post('/', (req, res) => {
     TeeTime.create(req.body, (error, createdTeeTime) => {
-        res.redirect('/teetimes')
+        res.redirect('/dashboard')
     });
 });
 
@@ -78,6 +82,7 @@ router.get('/edit/:id', (req, res) => {
 router.get('/:id', (req, res) => {
     TeeTime.findById(req.params.id, (err, foundTeeTime) => {
         res.render('show.ejs', {
+            currentUser: req.session.currentUser,
             teetime: foundTeeTime,
         });
     });

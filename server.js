@@ -1,10 +1,13 @@
 // Dependencies 
 require('dotenv').config();
 const express = require('express');
-const app = express(); 
-const mongoose = require('mongoose'); 
+const app = express();
+const mongoose = require('mongoose');
 const session = require('express-session');
 const methodOverride = require('method-override');
+const sessionsRouter = require('./controllers/sessions')
+const userRouter = require('./controllers/users')
+const User = require('./models/user')
 
 // const TeeTime = require('./models/teetimes')
 
@@ -19,12 +22,12 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 
 // Middleware 
-app.use(express.urlencoded({extended: true })); //body parser 
+app.use(express.urlencoded({ extended: true })); //body parser 
 app.use(methodOverride("_method"));
 
 app.use(
     session({
-        secret:process.env.SECRET,
+        secret: process.env.SECRET,
         resave: false,
         saveUninitialized: false
     })
@@ -33,28 +36,30 @@ app.use(
 
 // Routes / Controllers 
 const teeTimesController = require('./controllers/teetimes')
-app.use('/teetimes', teeTimesController);
+app.use('/', teeTimesController);
 
 const userController = require('./controllers/users');
-app.use('/teetimes', userController);
+app.use('/users', userController);
 
 const sessionsController = require('./controllers/sessions');
-app.use('/teetimes', sessionsController);
+app.use('/sessions', sessionsController);
 
 
 
 // Index
-// app.get('/', (req, res) => {
-// if (req.session.currentUser) {
-//     res.render('dashboard.ejs', {
-//         currentUser: req.session.currentUser
-//     });
-// } else {
-//     res.render('index.ejs', {
-//         currentUser: req.session.currentUser
-//     });
-// }
-// }); 
+app.get('/', (req, res) => {
+    if (req.session.currentUser) {
+        res.render('dashboard.ejs', {
+            currentUser: req.session.currentUser
+        });
+    } else {
+        res.render('index.ejs' , {
+       currentUser: req.session.currentUser }
+        )}
+});
+
+
+
 
 // New
 // app.get('/teetimes/new', (req, res)=> {

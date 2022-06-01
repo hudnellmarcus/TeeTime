@@ -2,40 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Tee Times</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeeTime</title>
 </head>
+<%- include('./partials/nav.ejs') %>
 
-<body>
-    
-    <nav class="new">
-       <%#  include('../partials/nav.ejs')   %> 
-            <a href="/teetimes/new">Add a New TeeTime</a>
-        </nav>
+    <body>
+        <h1>WELCOME TO TEETIME</h1>
 
-        <h1>My Tee Times</h1>
-        <ul>
-            <% teetimes.forEach(teetime=> { %>
-                <p>
-                    <%=teetime.date; %>
-                </p>
-                <p>
-                    <%=teetime.time; %>
-                </p>
-                <p>
-                <a href="/teetimes/<%= teetime.id %>">    <%=teetime.location %> </a>
-                </p>
-                <form action="/teetimes/<%= teetime.id %>?_method=DELETE" method="POST"
-                    style="display:inline; margin-left:16px;">
-                    <input type="submit" value="DELETE" />
-                </form>
-                <a href="/teetimes/edit/<%=teetime._id %>">Edit</a>
-                </li>
-                <% }) %>
-        </ul>
-
-</body>
+        <h4> <a href="sessions/login">Login</a></h4>
+        <h4>Not a member? <a href="users/register"> Register Here</a>
+    </body>
 
 </html>

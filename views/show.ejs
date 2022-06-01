@@ -10,16 +10,16 @@
     <title>View Tee Time</title>
 </head>
 <div class="container">
-
+	<%- include('./partials/nav.ejs')  %>
     <body>
-        <nav>
-            <a href="/teetimes">Dashboard</a>
-        </nav>
+       
+        <h3> <a href="/dashboard">Dashboard</a> </h3>
+       
 
-        <a href="/teetimes/edit/<%= teetime.id %>">
+        <a href="/edit/<%= teetime._id %>">
             <button type="button">edit</button>
         </a>
-        <form action="/teetimes/<%=teetime.id %>?_method=DELETE" method="POST">
+        <form action="/<%=teetime._id %>?_method=DELETE" method="POST">
             <input type="submit" value="DELETE TIME" />
         </form>
 

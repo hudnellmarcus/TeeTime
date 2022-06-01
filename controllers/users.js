@@ -5,9 +5,12 @@ const userRouter = express.Router();
 const User = require('../models/user')
 
 
-
 // New (registration page)
-
+userRouter.get('/register', (req, res) => {
+	res.render('users/new.ejs', {
+        currentUser: req.session.user
+    });
+});
 
 
 // Create - Create User 

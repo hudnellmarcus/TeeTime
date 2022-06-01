@@ -4,12 +4,12 @@ const bcrypt = require('bcrypt');
 const sessionsRouter = express.Router();
 const User = require('../models/user');
 
-// New (login page)
-// router.get('/login', (req, res) => {
-//     res.render('sessions/new.ejs', {
-//         currentUser: req.session.currentUser
-//     });
-// });
+//New (login page)
+sessionsRouter.get('/login', (req, res) => {
+    res.render('sessions/login.ejs', {
+        currentUser: req.session.currentUser
+    });
+});
 
 
 // // Delete (logout route)
@@ -19,7 +19,7 @@ sessionsRouter.delete('/', (req, res)=> {
     });
 })
 // // Create (login route)
-sessionsRouter.post('/login', (req, res) => {
+sessionsRouter.post('/', (req, res) => {
     // Check for an existing user
     User.findOne({
         username: req.body.username
@@ -35,7 +35,7 @@ sessionsRouter.post('/login', (req, res) => {
                 // add the user to our session
                 req.session.currentUser = foundUser;
                 // redirect back to our home page
-                res.redirect('/');
+                res.redirect('/dashboard')
             } else {
                 // if the passwords don't match
                 res.send('Oops! Invalid credentials');

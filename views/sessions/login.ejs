@@ -8,9 +8,18 @@
 	<title>Login</title>
 </head>
 
-<%#  include('../partials/nav.ejs')   %> 
 <body>
-	<h1>Home Page</h1>
+	<%- include('../partials/nav.ejs')  %>
+	<h1>Login</h1>
+	<form action='/sessions' method='POST'>
+		<label for="username">Username:</label>
+		<input type="text" name="username" id="username" />
+
+		<label for="password">Password:</label>
+		<input type="password" name="password" id="password" />
+
+		<input type="submit" value="Login">
+	</form>
 </body>
 
 </html>
