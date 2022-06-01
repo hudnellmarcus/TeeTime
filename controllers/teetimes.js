@@ -2,22 +2,27 @@ const express = require('express');
 const app = express();
 const TeeTime = require('../models/teetimes')
 const router = express.Router();
-const methodOverride = require('method-override'); 
+const methodOverride = require('method-override');
 const { append } = require('express/lib/response');
 const User = require('../models/user')
 
 
-app.use(methodOverride('_method')); 
+app.use(methodOverride('_method'));
 
 
 
 // Index
 router.get('/dashboard', (req, res) => {
     TeeTime.find({}, (error, allTeeTimes) => {
-        res.render('dashboard.ejs', {
-            currentUser: req.session.currentUser,
-            teetimes: allTeeTimes,
-        });
+        if (currentUser) {
+            res.render('dashboard.ejs', {
+                currentUser: req.session.currentUser,
+                teetimes: allTeeTimes,
+
+            });
+        } else {
+            (res.redirect('/'))
+        }
     });
 
 });
