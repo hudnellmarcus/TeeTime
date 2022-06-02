@@ -1,10 +1,24 @@
 // Dependencies 
 const express = require('express');
+const app = express();
 const bcrypt = require('bcrypt');
 const sessionsRouter = express.Router();
 const User = require('../models/user');
 
-//New (login page)
+
+
+
+
+// Middleware
+app.use(express.static('./views/public'))
+
+
+// ////////////////////////////////////////
+//ROUTES
+// ////////////////////////////////////////
+
+
+// //New (login page)
 sessionsRouter.get('/login', (req, res) => {
     res.render('sessions/login.ejs', {
         currentUser: req.session.currentUser
@@ -15,10 +29,10 @@ sessionsRouter.get('/login', (req, res) => {
 // // Delete (logout route)
 sessionsRouter.delete('/', (req, res)=> {
     req.session.destroy((error) => {
-        res.redirect('/');
+        res.render('views/index.ejs');
     });
 })
-// // Create (login route)
+// // // Create (login route)
 sessionsRouter.post('/', (req, res) => {
     // Check for an existing user
     User.findOne({
@@ -26,7 +40,7 @@ sessionsRouter.post('/', (req, res) => {
     }, (error, foundUser) => {
         // send error message if no user found
         if (!foundUser) {
-            res.send(`Oops! no such user has been registered!`);
+            res.send(`Oops! no such user has been registered! Please go back`);
         } else {
             // if a user has been found
             // compare the given password with the hashed password 
@@ -39,10 +53,9 @@ sessionsRouter.post('/', (req, res) => {
             } else {
                 // if the passwords don't match
                 res.send('Oops! Invalid credentials');
-            }
-        }
-    }
-    )
+                res.redirect('/')
+            }}
+    })
 });
 
 // Export Sessions Router

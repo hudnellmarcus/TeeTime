@@ -16,10 +16,10 @@
         <h3> <a href="/dashboard">Dashboard</a> </h3>
        
 
-        <a href="/edit/<%= teetime._id %>">
+        <a href="/edit/<%= teetime.id %>">
             <button type="button">edit</button>
         </a>
-        <form action="/<%=teetime._id %>?_method=DELETE" method="POST">
+        <form action="/<%=teetime.id %>?_method=DELETE" method="POST">
             <input type="submit" value="DELETE TIME" />
         </form>
 

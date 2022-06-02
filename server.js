@@ -8,6 +8,7 @@ const methodOverride = require('method-override');
 const sessionsRouter = require('./controllers/sessions')
 const userRouter = require('./controllers/users')
 const User = require('./models/user')
+const path = require('path');
 
 // const TeeTime = require('./models/teetimes')
 
@@ -15,15 +16,18 @@ const User = require('./models/user')
 
 
 // connect to Mongodb
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(process.env.DATABASE_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
 
 // Middleware 
-app.use(express.urlencoded({ extended: true })); //body parser 
+app.use(express.urlencoded({ extended: false })); //body parser 
 app.use(methodOverride("_method"));
+app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, './views/public')));
+
 
 app.use(
     session({
@@ -59,29 +63,35 @@ app.get('/', (req, res) => {
 });
 
 
-
-
 // New
-// app.get('/teetimes/new', (req, res)=> {
-//     res.render('new.ejs');
-// });
+
+// (login page)
+
+
 
 // Delete
+
 
 // Update
 
 
 // Create
-// app.post('/teetimes', (req, res) => {
-// TeeTime.create(req.body, (error, createdTeeTime) => {
-//     res.send(createdTeeTime)
-// });
-// });
+
+
+
+
+
 
 // Edit
 
 
+
 // Show
+
+
+
+
+
 
 
 // Connection logs 

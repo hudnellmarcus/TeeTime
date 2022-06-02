@@ -10,6 +10,7 @@
   "author": "Marcus Hudnell",
   "license": "ISC",
   "dependencies": {
+    "@airbrake/node": "^2.1.7",
     "bcrpyt": "^2.0.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",

@@ -5,21 +5,24 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/styles.css" rel="stylesheet"/>
 	<title>Login</title>
 </head>
+<div class="container" id="login">
 
-<body>
-	<%- include('../partials/nav.ejs')  %>
-	<h1>Login</h1>
-	<form action='/sessions' method='POST'>
-		<label for="username">Username:</label>
-		<input type="text" name="username" id="username" />
+	<body>
+		<%- include('../partials/nav.ejs') %>
+			<h1>Login</h1>
+			<form action='/sessions' method='POST'>
+				<label for="username">Username:</label>
+				<input type="text" name="username" id="username" />
 
-		<label for="password">Password:</label>
-		<input type="password" name="password" id="password" />
+				<label for="password">Password:</label>
+				<input type="password" name="password" id="password" />
 
-		<input type="submit" value="Login">
-	</form>
-</body>
+				<input type="submit" value="Login">
+			</form>
+	</body>
+</div>
 
 </html>
