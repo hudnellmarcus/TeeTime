@@ -84,6 +84,7 @@ router.get('/edit/:id', (req, res) => {
     TeeTime.findById(req.params.id, (error, foundTeeTime) => {
         res.render('edit.ejs', {
             teetime: foundTeeTime,
+            currentUser: req.session.currentUser
         });
     });
 });

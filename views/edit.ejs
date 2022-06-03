@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/styles.css" rel="stylesheet">
-    <title>TeeTime</title>
-</head>
+<%- include('./partials/head.ejs') %>
+    <div class="container">
+<%- include('./partials/nav.ejs') %>
+        <body>
+            <div class="main-content-edit">
+                <h1>Edit Tee Time</h1>
 
-<body>
-    <h1>Edit Tee Time</h1>
-
-    <form action="/<%=teetime.id%>?_method=PUT" method="POST">
-        Date: <input type="date" name="date" /><br />
-        Time: <input type="text" name="time" /><br />
-        Location: <input type="text" name="location" /><br />
-        <input type="submit" name="" value="Submit Changes" />
-    </form>
-
-</body>
+                <form action="/<%=teetime.id%>?_method=PUT" method="POST">
+                    Date: <input type="date" name="date" /><br />
+                    Time: <input type="text" name="time" placeholder="<%=teetime.time%>" /><br />
+                    Location: <input type="text" name="location" placeholder="<%=teetime.location%>" /><br />
+                    <input class="btn waves-effect dark-green darken-2" type="submit" name="" value="Submit Changes" />
+                </form>
+            </div>
+        </body>
+    </div>
 
 </html>

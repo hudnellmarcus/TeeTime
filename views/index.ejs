@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/styles.css" rel="stylesheet">
-    <title>TeeTime</title>
-</head>
+    <%- include('./partials/head.ejs') %>
+<title>TeeTime</title>
 <div class="container">
-<%- include('./partials/nav.ejs') %>
-    <body style="display:flex">
-        <h1>WELCOME TO TEETIME</h1>
+    <%- include('./partials/nav.ejs') %>
+    <div class="main-content-landing">
 
-        <h4> <a href="sessions/login">Login</a></h4>
-        <h4>Not a member? <a href="users/register"> Register Here</a>
-    </body>
+            <body style="display:flex">
+                <h1>WELCOME TO TEETIME</h1>
+
+                <h4> <a class="landing-link btn light-green darken-2" href="sessions/login">Login</a></h4>
+                <h4>Not a member? <a class="landing-link" href="users/register"> Register Here</a>
+            </body>
+    </div>
 </div>
+
 </html>

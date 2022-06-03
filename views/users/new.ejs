@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Register</title>
-</head>
+<%- include('../partials/head.ejs') %>
 
-<%- include('../partials/nav.ejs')  %>
-<body>
-	<h1>Register</h1>
-	<form action='/users/register' method='POST'>
-		<label for="username">Username:</label>
-		<input type="text" name="username" id="username" />
+	<div class="container">
+		<%- include('../partials/nav.ejs') %>
 
-		<label for="password">Password:</label>
-		<input type="password" name="password" id="password" />
-
-		<input type="submit" value="Register">
-	</form>
-</body>
+			<body>
+				<div class="main-content-register">
+					<h1>Register</h1>
+					<form action='/users/register' method='POST'>
+						<div class="input-field">
+							<label for="username">Username:</label>
+							<input type="text" name="username" id="username" />
+						</div>
+						<div class="input-field">
+							<label for="password">Password:</label>
+							<input type="password" name="password" id="password" />
+						</div>
+						<div class="input-field">
+							<label for="handicap">Handicap:</label>
+							<input type="number" name="handicap" id="handicap" />
+						</div>
+						<input class="btn waves-effect dark-green darken-2" type="submit" value="Register">
+					</form>
+				</div>
+	</div>
+	</body>
 
 </html>

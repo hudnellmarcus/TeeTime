@@ -1,33 +1,28 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
+<%- include('./partials/head.ejs') %>
     <title>Add New Tee Time</title>
-    <link href="/css/styles.css" rel="stylesheet">
-</head>
-<%- include('./partials/nav.ejs') %>
 
     <body>
-        <header>
-            <h1>Add Tee Time</h1>
-            <nav>
-                <ul>
+        <div class="container">
 
-                    <li>
-                        <a href="/dashboard">Your Tee Times</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <form action="/" method="POST">
-                Date: <input type="date" name="date" /><br />
-                Time: <input type="text" name="time" /><br />
-                Course: <input type="text" name="location" /><br />
-                <input type="submit" value="Add Reservation" />
-            </form>
-        </main>
+            <%- include('./partials/nav.ejs') %>
+                <h3 class="dashboard-link"> <a id="dashboard-link" href="/dashboard">Back to Dashboard</a> </h3>
+                <div class="main-content-new">
+                    <h1>Add Tee Time</h1>
+
+                    <main>
+                        <form action="/" method="POST">
+                            Date: <input type="date" name="date" /><br />
+                            Time: <input type="text" name="time" /><br />
+                            Course: <input type="text" name="location" /><br />
+                            <input class="btn waves-effect dark-green darken-2" type="submit" value="Add Reservation" />
+                        </form>
+                    </main>
+                </div>
+        </div>
     </body>
 
 </html>
+>

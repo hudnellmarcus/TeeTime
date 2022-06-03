@@ -9,6 +9,7 @@ const sessionsRouter = require('./controllers/sessions')
 const userRouter = require('./controllers/users')
 const User = require('./models/user')
 const path = require('path');
+const { format, parseISO } = require("date-fns");
 
 // const TeeTime = require('./models/teetimes')
 
@@ -20,6 +21,7 @@ mongoose.connect(process.env.DATABASE_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
+
 
 
 // Middleware 
@@ -35,7 +37,10 @@ app.use(
         resave: false,
         saveUninitialized: false
     })
-);
+    );
+    
+    const db = mongoose.connection;
+
 
 
 // Routes / Controllers 
@@ -46,6 +51,7 @@ const userController = require('./controllers/users');
 app.use('/users', userController);
 
 const sessionsController = require('./controllers/sessions');
+const TeeTimes = require('./models/teetimes');
 app.use('/sessions', sessionsController);
 
 
@@ -95,7 +101,6 @@ app.get('/', (req, res) => {
 
 
 // Connection logs 
-const db = mongoose.connection;
 db.on('error', (err) => console.log(err.message + ' is mongod not running?'));
 db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));

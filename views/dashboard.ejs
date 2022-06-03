@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/styles.css" rel="stylesheet">
+<%- include('./partials/head.ejs') %>
     <title>Your Tee Times</title>
-</head>
+    <!-- <div class="background"> -->
 
-<body>
-    
-    <nav class="new">
-       <%- include('./partials/nav.ejs') %>
-            <a href="/new">Add a New TeeTime</a>
-        </nav>
+    <body>
+        <div class="container">
 
-        <h1>My Tee Times</h1>
-        <ul>
-            <% teetimes.forEach(teetime => { %>
-                <p>
-                    <%=teetime.date; %>
-                </p>
-                <p>
-                    <%=teetime.time; %>
-                </p>
-                <p>
-                <a href="/<%= teetime.id %>">    <%=teetime.location %> </a>
-                </p>
-                <form action="/<%= teetime.id %>?_method=DELETE" method="POST"
-                    style="display:inline; margin-left:16px;">
-                    <input type="submit" value="DELETE" />
-                </form>
-                <a href="/edit/<%=teetime._id %>">Edit</a>
-                </li>
-                <% }) %>
-        </ul>
+            <%- include('./partials/nav.ejs') %>
 
-</body>
+                <a class="btn light-green darken-2" href="/new">Add a New TeeTime</a>
+                <div class="main-content-dashboard">
+                    <div id="dash-show-card">
+
+
+                        <h1>My Tee Times</h1>
+                        <ul class="teetimes">
+                            <% teetimes.forEach(teetime=> { %>
+                                <li>
+                                    <%= teetime.date %>
+                                </li>
+                                <li>
+                                    <%=teetime.time; %>
+                                </li>
+                                <li>
+                                    <a class="links" href="/<%= teetime.id %>">
+                                   Click to view
+                                    </a>
+                                </li>
+                                <div id="show-edit-bar" <form action="/<%= teetime.id %>?_method=DELETE" method="POST"
+                                    style="display:inline; margin-left:16px;">
+                                    <input class="btn-floating btn-medium waves-effect waves-light red" type="submit" value="X" />
+                                    </form>
+
+                                    <a class="btn waves-effect light-green darken-2" href="/edit/<%=teetime._id %>">Edit</a>
+                                </div>
+                                <% }) %>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+    </body>
 
 </html>

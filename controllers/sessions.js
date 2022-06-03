@@ -27,11 +27,11 @@ sessionsRouter.get('/login', (req, res) => {
 
 
 // // Delete (logout route)
-sessionsRouter.delete('/', (req, res)=> {
+sessionsRouter.delete('/', (req, res) => {
     req.session.destroy((error) => {
-        res.render('views/index.ejs');
-    });
-})
+        res.render('/login');
+    })});
+
 // // // Create (login route)
 sessionsRouter.post('/', (req, res) => {
     // Check for an existing user
@@ -54,7 +54,8 @@ sessionsRouter.post('/', (req, res) => {
                 // if the passwords don't match
                 res.send('Oops! Invalid credentials');
                 res.redirect('/')
-            }}
+            }
+        }
     })
 });
 
