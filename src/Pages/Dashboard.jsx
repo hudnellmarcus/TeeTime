@@ -46,11 +46,12 @@ const Dashboard = (props) => {
   const loaded = () => {
 
       return (
+        <div className='main-content-dashboard'>
         <CardBody
           teetime={teeTime}
           />
+         </div>
          );
-        
         };
         
 
