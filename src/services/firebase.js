@@ -15,13 +15,11 @@ firebase.initializeApp(config);
 // Provider setup 
 const auth = firebase.auth();
 
-function getProviders() {
-const googleProvider = new firebase.auth.GoogleAuthProvider();
-const emailProvider = new firebase.auth.EmailAuthProvider(); 
-}
+const provider = new firebase.auth.GoogleAuthProvider();
+
 
 function login() {
-    return auth.signInWithPopup(getProviders());
+    return auth.signInWithPopup(provider);
 }
 
 function logout() {

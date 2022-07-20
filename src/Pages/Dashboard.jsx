@@ -6,18 +6,18 @@ const Dashboard = (props) => {
   const [teeTime, setTeeTime] = useState(null);
 
   const URL = "http://localhost:4000/dashboard";
-  
+
   // API CALLS/////////////////////////////////////////////////////
-  
+
   const getTeeTime = async () => {
-      const response = await fetch(URL);
-      const data = await response.json();
-      setTeeTime(data);
-    };
-    useEffect(() => {
-      getTeeTime();
-    }, []);
-    
+    const response = await fetch(URL);
+    const data = await response.json();
+    setTeeTime(data);
+  };
+  useEffect(() => {
+    getTeeTime();
+  }, []);
+
   console.log(teeTime);
 
   const createTeeTime = async (createdTeeTime) => {
@@ -44,24 +44,19 @@ const Dashboard = (props) => {
   };
 
   const loaded = () => {
-
-      return (
-        <div className='main-content-dashboard'>
-        <CardBody
-          teetime={teeTime}
-          />
-         </div>
-         );
-        };
-        
-
-
-        return teeTime ? loaded() : <h2>Loading...</h2>
+    return (
+     
+        <div className="row">
+         
+            <CardBody teetime={teeTime} />
           
-          
+        </div>
+    
+     
+    );
+  };
 
-
-
+  return teeTime ? loaded() : <h2>Loading...</h2>;
 };
 
 export default Dashboard;
