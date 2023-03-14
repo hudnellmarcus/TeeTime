@@ -5,7 +5,7 @@ import CardBody from "../Components/CardBody";
 const Dashboard = (props) => {
   const [teeTime, setTeeTime] = useState(null);
 
-  const URL = "http://localhost:4000/dashboard";
+  const URL = "https://teetime0213.herokuapp.com/";
 
   // API CALLS/////////////////////////////////////////////////////
 

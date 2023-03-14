@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TeeTime-front/static/css/main.b91c6c54.css",
+    "main.js": "/TeeTime-front/static/js/main.06632abe.js",
+    "static/js/787.cda612ba.chunk.js": "/TeeTime-front/static/js/787.cda612ba.chunk.js",
+    "index.html": "/TeeTime-front/index.html",
+    "main.b91c6c54.css.map": "/TeeTime-front/static/css/main.b91c6c54.css.map",
+    "main.06632abe.js.map": "/TeeTime-front/static/js/main.06632abe.js.map",
+    "787.cda612ba.chunk.js.map": "/TeeTime-front/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b91c6c54.css",
+    "static/js/main.06632abe.js"
+  ]
+}

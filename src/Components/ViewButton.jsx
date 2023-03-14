@@ -1,6 +1,6 @@
 const ViewButton = (props) => {
 
-   const url = `https://localhost4000/dashboard/${props.teetime.id}`
+   const url = `https://teetime0213.herokuapp.com/dashboard/${props.teetime.id}`
     
     
     return (
